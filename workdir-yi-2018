@@ -71,3 +71,16 @@ articlesCount	1
 ### 6.6.1
 docker container run --rm -ti -v $(pwd):/src   mkenney/npm:node-8-debian npm run build
 
+résultat du ls du répertoire dist:
+favicons-c2a605fbc0e687b2e1b4b90a7c445cdd  index.html  static
+
+### 6.6.2
+docker container run --rm -ti -v /home/docker/Documents/tp-conduit/vue-realworld-example-app/dist:/usr/share/nginx/html -p 8000:80  nginx:alpine
+On retrouve bien l'article précédemment crée.
+
+### 6.6.3
+docker image build -t realworldfront:vuejs .
+
+https://hub.docker.com/r/vivienyncrea/realworldfront/
+
+
