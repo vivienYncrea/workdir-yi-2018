@@ -43,3 +43,31 @@ Le cache a bien fonctionne car toutes les commandes ne se sont pas reproduites.
 
 docker container run -ti --rm -v $(pwd):/src -v gradle-home:/home/gradle/.gradle -p 8001:8080 -w /src gradle:4.7.0-jdk8-alpine gradle bootrun
 La page web nous retourne que nous avons 0 articles pour le moment.
+
+### 6.5.1
+
+On a bien notre article qui a ete crée en local:
+
+articles	
+0	
+id	"c7c75ac7-bdf2-499e-9975-9e833fe7be8f"
+slug	"article-de-test-local-8001"
+title	"article de test local 8001"
+description	"test"
+body	"test du local"
+favorited	false
+favoritesCount	0
+createdAt	"2018-05-16T12:31:02.425Z"
+updatedAt	"2018-05-16T12:31:02.425Z"
+tagList	[]
+author	
+username	"test"
+bio	""
+image	"https://static.productionready.io/images/smiley-cyrus.jpg"
+following	false
+articlesCount	1
+
+
+### 6.6.1
+docker container run --rm -ti -v $(pwd):/src   mkenney/npm:node-8-debian npm run build
+
