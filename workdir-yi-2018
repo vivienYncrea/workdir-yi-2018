@@ -2,8 +2,44 @@
 Créer un nouveau paragraphe pour chaque section 6.x.y
 ## 6.3
 ### 6.3.1
-...
+7a2e472d9d9e77ad7de8f4ace9e09d7597ee60f7
+
+### 6.3.2
+https://github.com/mkenney/docker-npm/blob/master/node-8-debian/Dockerfile
+Il y a 1 volume qui est déclaré, c'est le volume /src
+docker image pull mkenney/npm:node-8-debian
+ 9af19a7f4e2c
+
+### 6.3.3
+docker container run --rm -ti -v $(pwd):/src mkenney/npm:node-8-debian npm install
+
+### 6.3.4
+docker container run --rm -ti -v -p 8000:8080 $(pwd):/src mkenney/npm:node-8-debian npm run dev
+ 
 ## 6.4
-.
-.
-.
+
+### 6.4.1
+eef3d052fe83dc688c0eb3dab97876d714a2d14d
+
+### 6.4.2
+docker image pull gradle:4.7.0-jdk8-alpine
+f438b7d58d0a
+"Volumes": {
+                "/home/gradle/.gradle": {}
+
+### 6.4.3
+volume create gradle-home
+docker volume ls
+DRIVER              VOLUME NAME
+local               c097a96dab3644590dee874684e3dfe14205010d481055428aa8f0fd66270fbe
+local               gradle-home
+local               nginx-logs
+
+### 6.4.4
+docker container run -ti --rm -v $(pwd):/src -v gradle-home:/home/gradle/.gradle -w /src gradle:4.7.0-jdk8-alpine gradle build 
+Le cache a bien fonctionne car toutes les commandes ne se sont pas reproduites.
+
+### 6.4.5
+
+docker container run -ti --rm -v $(pwd):/src -v gradle-home:/home/gradle/.gradle -p 8001:8080 -w /src gradle:4.7.0-jdk8-alpine gradle bootrun
+La page web nous retourne que nous avons 0 articles pour le moment.
